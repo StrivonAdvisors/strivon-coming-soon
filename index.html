@@ -2,55 +2,82 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Strivon – Coming Soon</title>
+  <title>STRIVON – Coming Soon</title>
   <style>
     body {
-      background: #f7f7f7;
-      font-family: Arial, sans-serif;
+      background: #1A2D5A;
+      font-family: 'Courier New', Courier, monospace;
       text-align: center;
       padding: 100px 20px;
+      color: #ffffff;
     }
     h1 {
       font-size: 36px;
-      margin-top: 20px;
-      color: #222;
+      color: #ffffff;
     }
     p {
       font-size: 18px;
-      color: #444;
+      color: #d1d9f0;
     }
     #countdown {
-      font-size: 24px;
-      color: #d9534f;
-      margin-top: 30px;
+      font-size: 36px;
+      color: #f7c331;
+      margin-top: 40px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .digit {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #0F1B3D;
+      margin: 5px;
+      border-radius: 8px;
+      min-width: 60px;
+    }
+    .label {
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 10px;
     }
     .contact {
-      margin-top: 40px;
+      margin-top: 50px;
       font-size: 16px;
+      color: #dddddd;
+    }
+    .brand {
+      font-weight: bold;
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
   <h1>We’re Almost Ready!</h1>
-  <p>Strivon is launching on <strong>July 26, 2025</strong></p>
-  <p>Resume Writing | LinkedIn | Career Coaching | Startup Advisory</p>
-  <div id="countdown">Loading countdown...</div>
+  <p><span class="brand">STRIVON</span> is launching on <strong>July 26, 2025</strong></p>
+  <p>Resume Writing | LinkedIn | Career Coaching | Startup Advisory by <span class="brand">STRIVON</span></p>
+
+  <div id="countdown">
+    <div class="digit" id="days">00</div> :
+    <div class="digit" id="hours">00</div> :
+    <div class="digit" id="minutes">00</div> :
+    <div class="digit" id="seconds">00</div>
+    <div class="label">DAYS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HRS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SEC</div>
+  </div>
+
   <div class="contact">
-    📧 strivonadvisors@gmail.com<br />
+    📧 <span class="brand">STRIVON</span>advisors@gmail.com<br />
     📱 +91 9618691666<br />
-    📷 @strivonadvisors on Instagram
+    📷 @<span class="brand">STRIVON</span>advisors on Instagram
   </div>
 
   <script>
     const launchDate = new Date("July 26, 2025 00:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
 
     const updateCountdown = () => {
       const now = new Date().getTime();
       const distance = launchDate - now;
 
       if (distance <= 0) {
-        countdownEl.innerHTML = "🎉 We're Live!";
+        document.getElementById("countdown").innerHTML = "🎉 We're Live!";
         return;
       }
 
@@ -59,7 +86,10 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdownEl.innerHTML = `Launching in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      document.getElementById("days").textContent = String(days).padStart(2, '0');
+      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
     };
 
     setInterval(updateCountdown, 1000);
