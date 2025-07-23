@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +10,6 @@
       text-align: center;
       padding: 100px 20px;
     }
-    img {
-      max-width: 200px;
-    }
     h1 {
       font-size: 36px;
       margin-top: 20px;
@@ -23,21 +19,51 @@
       font-size: 18px;
       color: #444;
     }
-    .contact {
+    #countdown {
+      font-size: 24px;
+      color: #d9534f;
       margin-top: 30px;
+    }
+    .contact {
+      margin-top: 40px;
       font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <img src="https://i.ibb.co/nMMghRz/Transparent-BG.png" alt="Strivon Logo" />
   <h1>We’re Almost Ready!</h1>
   <p>Strivon is launching on <strong>July 26, 2025</strong></p>
   <p>Resume Writing | LinkedIn | Career Coaching | Startup Advisory</p>
+  <div id="countdown">Loading countdown...</div>
   <div class="contact">
     📧 strivonadvisors@gmail.com<br />
     📱 +91 9618691666<br />
     📷 @strivonadvisors on Instagram
   </div>
+
+  <script>
+    const launchDate = new Date("July 26, 2025 00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance <= 0) {
+        countdownEl.innerHTML = "🎉 We're Live!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `Launching in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    };
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
