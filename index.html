@@ -24,27 +24,29 @@
     }
 
     img.logo {
-      max-width: 300px;
+      max-width: 280px;
       height: auto;
-      margin-bottom: 40px;
-      animation: slideUp 1s ease-in-out forwards;
+      margin-bottom: 20px;
+      animation: float 4s ease-in-out infinite, fadeInLogo 1.5s ease-in-out forwards;
     }
 
     h1 {
       font-size: 42px;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      opacity: 0;
       animation: slideUp 1s ease-in-out forwards;
+      animation-delay: 0.5s;
     }
 
     p {
       font-size: 22px;
       color: #d1d9f0;
+      margin-bottom: 30px;
       opacity: 0;
-      animation: fadeInText 2s ease-in forwards;
+      animation: fadeInText 1.5s ease-in forwards;
       animation-delay: 1s;
-      margin-bottom: 40px;
     }
 
     .brand {
@@ -61,7 +63,7 @@
       letter-spacing: 3px;
       opacity: 0;
       animation: fadeInText 2s ease-in forwards;
-      animation-delay: 2s;
+      animation-delay: 1.5s;
     }
 
     .digit {
@@ -81,19 +83,30 @@
       letter-spacing: 2px;
     }
 
+    @keyframes fadeInBody {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @keyframes slideUp {
       from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
 
-    @keyframes fadeInText {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes fadeInLogo {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
-    @keyframes fadeInBody {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
     }
   </style>
 </head>
